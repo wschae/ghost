@@ -1,0 +1,36 @@
+<html ng-app="app">
+    <head>
+        <meta charset="utf-8">
+        <title>My Ghost</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"><!-- load bootstrap -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script><!-- load angular -->
+        <script src="core.js"></script>
+    </head>
+    <body ng-controller="myCtrl">
+        <div class="container">
+            <div class="jumbotron text-center">
+                <h1>Create your own Ghost blog</h1>
+            </div>
+            
+            <div class="row">
+                <div class="col-xs-5"></div>
+                <div class="col-xs-1">
+                    <input type="text" class="form-control" ng-model="name" ng-change="verify()">
+                </div>
+                <div class="col-xs-1"><h4>.localhost.com</h4></div>
+                <div class="col-xs-1"></div>
+                <div class="col-xs-1">
+                    <button type="button" class="btn btn-primary" ng-click="create()" ng-disabled="!isAvailable">Create</button>
+                    </div>
+                <div class="col-xs-3"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-5"></div>
+                <div class="col-xs-2" ng-show="isAvailable" ng-style="{color:'blue'}">available</div>
+                <div class="col-xs-2" ng-show="!isAvailable" ng-style="{color:'red'}">not available</div>
+            </div>            
+        </div>        
+    </body>
+</html>
