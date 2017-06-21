@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    container_name: nginx-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    network_mode: "bridge"      
+
+  ghost1:
+    build: .
+    container_name: ghost-main
+    environment:
+      - VIRTUAL_HOST=main.localhost
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock      
+    network_mode: "bridge"
+
+# networks:
+#   default:
+#     external:
+#       name: nginx-proxy
