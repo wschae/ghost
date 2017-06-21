@@ -14,7 +14,7 @@ services:
     build: .
     container_name: ghost-main
     environment:
-      - VIRTUAL_HOST=main.localhost
+      - VIRTUAL_HOST=localhost
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock      
     network_mode: "bridge"
