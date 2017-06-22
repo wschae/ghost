@@ -23,7 +23,7 @@ app.post('/api/setup', function(req, res) {
     }    
     var docker = new Docker({socketPath: socket});
     docker.run('ghost', [], [process.stdout, process.stderr], {Tty: false, env: ['VIRTUAL_HOST='+data.name+'.localhost']} , function(error, data, container){
-        console.log(err);
+        console.log(error);
         res.send('Error');
     });
 
