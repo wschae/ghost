@@ -12,6 +12,7 @@ services:
 
   ghost1:
     build: .
+    image: wschae/ghost1
     container_name: ghost-main
     environment:
       - VIRTUAL_HOST=localhost
