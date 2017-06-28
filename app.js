@@ -5,6 +5,7 @@ var Docker = require('dockerode');
 var fs     = require('fs');
 
 var port = process.env.PORT || 8080;
+var host = 'ghost1stack.edc83907.svc.dockerapp.io'; //"localhost";
 
 app.use(express.static(__dirname + "/public"))
 app.use(bodyParser.urlencoded({'extended':'true'}));            // parse application/x-www-form-urlencoded
@@ -22,14 +23,14 @@ app.post('/api/setup', function(req, res) {
     throw new Error('Are you sure the docker is running?');
     }    
     var docker = new Docker({socketPath: socket});
-    docker.run('ghost', [], [process.stdout, process.stderr], {Tty: false, env: ['VIRTUAL_HOST='+data.name+'.localhost']} , function(error, data, container){
+    docker.run('ghost', [], [process.stdout, process.stderr], {Tty: false, env: ['VIRTUAL_HOST='+data.name+'.'+host]} , function(error, data, container){
         console.log(error);
         res.send('Error');
     });
 
     // need to wait?
-    console.log("redorected to " + data.name+'.localhost/');
-    res.send({redirect: 'http://'+data.name+'.localhost/ghost/setup/one/'});
+    console.log("redorected to " + data.name+'.'+host+'/');
+    res.send({redirect: 'http://'+data.name+'.'+host+'/'});
 });
 
 app.get('*', function(req, res) {
