@@ -5,7 +5,7 @@ var Docker = require('dockerode');
 var fs     = require('fs');
 
 var port = process.env.PORT || 8080;
-var host = 'ghost1stack.edc83907.svc.dockerapp.io'; //"localhost";
+var host = 'gs1.91f1b051.svc.dockerapp.io'; //"localhost";
 
 app.use(express.static(__dirname + "/public"))
 app.use(bodyParser.urlencoded({'extended':'true'}));            // parse application/x-www-form-urlencoded
